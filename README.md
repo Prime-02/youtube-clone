@@ -60,7 +60,7 @@ The application replicates core YouTube experiences including a persistent dark-
 
 | Layer | Technology |
 |---|---|
-| Framework | [Next.js 15](https://nextjs.org/) (App Router) |
+| Framework | [Next.js 16](https://nextjs.org/) (App Router) |
 | Language | JavaScript (ES2024) |
 | Styling | [Tailwind CSS v4](https://tailwindcss.com/) + CSS custom properties |
 | Icons | [Lucide React](https://lucide.dev/) |
