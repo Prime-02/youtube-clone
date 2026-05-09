@@ -1,12 +1,32 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import VideoCard from "./VideoCard";
 import CategoryPills from "./CategoryPills";
 import axiosInstance from "@/app/lib/axiosInstance";
 
 export default function VideoFeed() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex justify-center py-16">
+          <div
+            className="w-8 h-8 border-4 rounded-full animate-spin"
+            style={{
+              borderColor: "var(--bg-surface)",
+              borderTopColor: "var(--accent)",
+            }}
+          />
+        </div>
+      }
+    >
+      <VideoFeedInner />
+    </Suspense>
+  );
+}
+
+function VideoFeedInner() {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
 

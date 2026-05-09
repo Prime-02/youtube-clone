@@ -2,7 +2,7 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Topbar from "./components/ui/Topbar";
 import Sidebar from "./components/ui/Sidebar";
 
@@ -35,10 +35,24 @@ export default function RootLayout({ children }) {
         <div className="flex pt-14">
           <Sidebar collapsed={sidebarCollapsed} />
           <main
-            className="flex-1 min-w-0 transition-all duration-200"
+            className="flex-1 min-w-0 transition-all duration-200 overflow-hidden"
             style={{ marginLeft: sidebarCollapsed ? "4rem" : "15rem" }}
           >
-            {children}
+            <Suspense
+              fallback={
+                <div className="flex justify-center py-16">
+                  <div
+                    className="w-8 h-8 border-4 rounded-full animate-spin"
+                    style={{
+                      borderColor: "var(--bg-surface)",
+                      borderTopColor: "var(--accent)",
+                    }}
+                  />
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
           </main>
         </div>
       </body>
